@@ -59,6 +59,22 @@ function App() {
             })
     }
 
+    function updateUser(id, name, age, gender) {
+        const payload = {
+            "id": id,
+            "name": name,
+            "age": age,
+            "gender": gender
+        }
+        http.put('/users', payload)
+            .then(function (response) {
+                console.log(response.data)
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    }
+
     return (
         <div>
             <h1>Users API with Axios</h1>
@@ -78,6 +94,10 @@ function App() {
             <button onClick={function () {
                 createUser('Ada', 18, 'female')
             }}>Create user
+            </button>
+            <button onClick={function () {
+                updateUser(14, 'Ada', 19, 'female')
+            }}>Update User
             </button>
         </div>
     );
